@@ -17,15 +17,15 @@ export class Menu extends Component {
         const menu = this.state.dishes.map(item => {
             return (
                 <MenuItem dish={item}
-                    DishSelect={this.onDishSelect}
+                    DishSelect={() => this.onDishSelect(item)}
                     key={item.id} />
             )
         })
 
         let dishDetail = null;
-        if (this.state.selectedDish !== null) {
-            dishDetail = <DishDetails
-                dish={this.state.selectedDish} />
+        if (this.state.selectedDish != null) {
+            dishDetail = (<DishDetails
+                dish={this.state.selectedDish} />)
         }
 
         return (
