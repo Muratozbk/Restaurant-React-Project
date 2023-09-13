@@ -1,19 +1,32 @@
 import React, { Component } from 'react'
 import DISHES from '../../data/dishes.js'
 import MenuItem from './MenuItem.jsx'
+import DishDetails from './DishDetails.jsx'
 
 export class Menu extends Component {
     state = {
-        dishes: DISHES
+        dishes: DISHES,
+        selectedDish: null
+    }
+
+    onDishSelect = (dish) => {
+        this.setState({ selectedDish: dish })
     }
 
     render() {
         const menu = this.state.dishes.map(item => {
             return (
                 <MenuItem dish={item}
+                    DishSelect={this.onDishSelect}
                     key={item.id} />
             )
         })
+
+        let dishDetail = null;
+        if (this.state.selectedDish !== null) {
+            dishDetail = <DishDetails
+                dish={this.state.selectedDish} />
+        }
 
         return (
             <div className='container'>
@@ -23,7 +36,7 @@ export class Menu extends Component {
                     </div>
 
                     <div className="col-6">
-                        <h1>Col 6 Right</h1>
+                        {dishDetail}
                     </div>
                 </div>
             </div>
