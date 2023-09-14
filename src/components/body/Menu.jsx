@@ -2,15 +2,23 @@ import React, { Component } from 'react'
 import DISHES from '../../data/dishes.js'
 import MenuItem from './MenuItem.jsx'
 import DishDetails from './DishDetails.jsx'
+import { Button, Container, Modal, Row } from 'react-bootstrap'
 
 export class Menu extends Component {
     state = {
         dishes: DISHES,
-        selectedDish: null
+        selectedDish: null,
+        show: false
     }
 
+    modalClose = () => this.setState({ show: false })
+    modalOpen = () => this.setState({ show: true })
+
     onDishSelect = (dish) => {
-        this.setState({ selectedDish: dish })
+        this.setState({
+            selectedDish: dish,
+            show: !this.state.show
+        })
     }
 
     render() {
@@ -29,17 +37,24 @@ export class Menu extends Component {
         }
 
         return (
-            <div className='container'>
-                <div className="row">
-                    <div className="col-6">
-                        {menu}
-                    </div>
+            <Container fluid={true}>
+                <Row lg={3} md={3} sm={6} xs={6}>
+                    {menu}
+                </Row>
 
-                    <div className="col-6">
+                <Modal size='lg' show={this.state.show} onHide={this.modalClose}>
+                    <Modal.Body>
                         {dishDetail}
-                    </div>
-                </div>
-            </div>
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <Button variant='secondary' onClick={this.modalClose}>
+                            Close
+                        </Button>
+                    </Modal.Footer>
+                </Modal>
+
+
+            </Container>
         )
     }
 }
