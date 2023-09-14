@@ -2,18 +2,29 @@ import React from 'react';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import NavDropdown from 'react-bootstrap/NavDropdown';
+import '../../assets/css/Main.css';
+import { Link } from 'react-router-dom';
+import Logo from '../../assets/images/logo.png'
 
 export default function Navigation() {
     return (
         <div>
-            <Navbar bg="dark" data-bs-theme="dark">
+            <Navbar expand="lg" bg="dark" data-bs-theme="dark">
                 <Container>
-                    <Navbar.Brand href="#home">React Restaurant Project</Navbar.Brand>
-                    <Nav className="me-auto">
-                        <Nav.Link href="#home">Home</Nav.Link>
-                        <Nav.Link href="#features">Features</Nav.Link>
-                        <Nav.Link href="#pricing">Pricing</Nav.Link>
-                    </Nav>
+                    <Navbar.Brand><Link to='/'></Link></Navbar.Brand>
+                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                    <Navbar.Collapse id="basic-navbar-nav">
+                        <Nav className="me-auto">
+                            <Nav.Link> <img src={Logo} alt="logo" />
+                                <Link to={'/'} className='mainmenu'>Home</Link> </Nav.Link>
+                            <Nav.Link><Link to={'/menu'} className='mainmenu'>Menu</Link> </Nav.Link>
+                            <Nav.Link><Link to={'/about'} className='mainmenu'>About</Link> </Nav.Link>
+                            <Nav.Link><Link to={'/contact'} className='mainmenu'>Contact</Link> </Nav.Link>
+
+
+                        </Nav>
+                    </Navbar.Collapse>
                 </Container>
             </Navbar>
 
