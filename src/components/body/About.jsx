@@ -2,6 +2,7 @@ import React, { Fragment } from 'react'
 import { Container } from 'react-bootstrap'
 
 export default function About() {
+    document.title = "About Page"
     return (
         <div>
             <Fragment>

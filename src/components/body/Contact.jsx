@@ -27,6 +27,7 @@ export class Contact extends Component {
     }
 
     render() {
+        document.title = "Contact Page"
         return (
             <div>
                 <Fragment>

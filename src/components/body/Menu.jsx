@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import DISHES from '../../data/dishes.js'
+import COMMENTS from '../../data/comments.js'
 import MenuItem from './MenuItem.jsx'
 import DishDetails from './DishDetails.jsx'
 import { Button, Container, Modal, Row } from 'react-bootstrap'
@@ -7,6 +8,7 @@ import { Button, Container, Modal, Row } from 'react-bootstrap'
 export class Menu extends Component {
     state = {
         dishes: DISHES,
+        comments: COMMENTS,
         selectedDish: null,
         show: false
     }
@@ -22,6 +24,7 @@ export class Menu extends Component {
     }
 
     render() {
+        document.title = "Menu Page"
         const menu = this.state.dishes.map(item => {
             return (
                 <MenuItem dish={item}
@@ -32,8 +35,14 @@ export class Menu extends Component {
 
         let dishDetail = null;
         if (this.state.selectedDish != null) {
+            const comments = this.state.comments
+                .filter(comment => {
+                    return comment.dishId === this.state.selectedDish.id;
+                })
+
             dishDetail = (<DishDetails
-                dish={this.state.selectedDish} />)
+                dish={this.state.selectedDish}
+                comments={comments} />)
         }
 
         return (
