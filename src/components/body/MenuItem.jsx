@@ -8,8 +8,10 @@ export default function MenuItem(props) {
             <Fragment>
                 <Container>
                     <Col>
-                        <Card style={{ width: '25rem' }}>
-                            <Card.Img variant="top" src={props.dish.image} />
+                        <Card style={{ minWidth: '18rem', overflow: 'hidden' }}>
+                            <Card.Img variant="top" src={props.dish.image}
+                                style={{ cursor: "pointer", width: '100%' }}
+                                onClick={() => props.DishSelect(props.dish)} />
                             <Card.Body>
                                 <Card.Title style={{ cursor: "pointer" }}
                                     onClick={() => props.DishSelect(props.dish)}

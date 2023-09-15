@@ -5,7 +5,7 @@ import DishComment from './DishComment'
 export default function DishDetails(props) {
     return (
         <div>
-            <Card style={{ width: '35rem' }}>
+            <Card style={{ width: '48rem' }}>
                 <Card.Img variant="top" src={props.dish.image} />
                 <Card.Body>
                     <Card.Title>

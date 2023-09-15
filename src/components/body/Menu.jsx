@@ -47,7 +47,7 @@ export class Menu extends Component {
 
         return (
             <Container fluid={true}>
-                <Row lg={3} md={3} sm={6} xs={6}>
+                <Row lg={3} md={3} sm={2} xs={1}>
                     {menu}
                 </Row>
 
